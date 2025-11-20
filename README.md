@@ -22,3 +22,13 @@ O sistema foi dividido em módulos. No app de usuários, cada pessoa registrada 
 O sistema ainda tem uma área de relatórios, onde o usuário tem uma visão geral da operação. Dá para ver quantos veículos existem, quantos estão ativos, o total de rotas, quantas foram concluídas e quais problemas foram registrados. Esses dados ajudam a entender como o serviço está indo, detectar falhas e tomar decisões mais acertadas. As permissões são organizadas para manter a ordem e a segurança. O cidadão tem acesso básico e pode sinalizar problemas na coleta. O gestor de rotas tem mais acesso, podendo cadastrar veículos, rotas e gerenciar os problemas. O administrador controla o sistema todo, inclusive os usuários. Essa divisão ajuda a manter a organização e evitar mudanças indevidas.
 
 Na prática, o fluxo é simples. O usuário entra na página de login, coloca email e senha e, se estiver tudo certo, vai para o painel principal. Aí, gestores e administradores podem cadastrar novos veículos, criar rotas, marcar rotas como concluídas e resolver problemas. Já os cidadãos conseguem registrar situações, como coletas não realizadas, ajudando a equipe a acompanhar o que está acontecendo pela cidade.
+
+Para colocar o nosso sistema de gestão de coleta de resíduos online, usamos o PythonAnywhere, que é um serviço de hospedagem próprio para aplicações Python, incluindo projetos feitos com Django. O processo foi simples e seguiu alguns passos básicos.
+
+Primeiro, criamos uma conta no PythonAnywhere e fizemos o upload do nosso projeto Django para o ambiente deles. Isso pode ser feito enviando os arquivos diretamente ou conectando o repositório via GitHub. Depois que o código estava lá, criamos um virtual environment dentro do PythonAnywhere para instalar as mesmas dependências que usamos no desenvolvimento, como Django e outros pacotes do requirements.txt.
+
+Em seguida, configuramos o arquivo WSGI, que é responsável por ligar o nosso código Django ao servidor web do PythonAnywhere. Também apontamos a variável DJANGO_SETTINGS_MODULE para o nosso arquivo de configurações. Ajustamos ainda os caminhos para os arquivos estáticos, rodando o collectstatic para que o PythonAnywhere pudesse servir o CSS, JavaScript e imagens corretamente.
+
+Como nosso banco de dados era MySQL, configuramos no PythonAnywhere as mesmas credenciais e apontamos no settings.py para o banco remoto. Depois disso, rodamos as migrações diretamente no console bash do PythonAnywhere para criar as tabelas no banco hospedado.
+
+Por fim, reiniciamos a aplicação no painel web. Quando o servidor carregou, o sistema já estava disponível em um endereço online fornecido pelo PythonAnywhere. Com isso, qualquer pessoa pôde acessar o sistema pelo navegador, sem precisar instalar nada localmente.
